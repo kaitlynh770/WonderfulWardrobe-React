@@ -1,4 +1,18 @@
 import React from 'react';
+import Wardrobe from './Wardrobe.js';
+
+function preppyOutfit(props) {
+    let { preppyStyle } = props;
+    if (preppyStyle > 76 && Blouse > 0 && Skirts > 0) 
+    {
+        return <div> You should wear a blouse and skirt today </div>;
+    } 
+    else 
+    {
+        return <div> No outfit combinations, time to go shopping! </div>;
+    }
+
+  }
 
 class Inventory extends React.Component{
     render(){
@@ -66,6 +80,7 @@ class Inventory extends React.Component{
                 </form>
             </div>
         );
+    
     }
 
 }

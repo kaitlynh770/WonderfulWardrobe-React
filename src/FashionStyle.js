@@ -14,12 +14,7 @@ class FashionStyle extends React.Component{
             <div style = {fontStyling}>
                 Tell us your wardrobe details! :)
             </div>
-            // <div className = "App" style = {fontStyling}>
-            //     <input style = {fontStyling} type="radio" value="Preppy" name="style" /> Preppy
-            //     <input style = {fontStyling} type="radio" value="Casual" name="style" /> Casuals
-            //     <input style = {fontStyling} type="radio" value="Comfy" name="style" /> Comfy
-            //     <input style = {fontStyling} type="radio" value="Elegant" name="style" /> Elegant
-            // </div>
+            
         );
     }
 
