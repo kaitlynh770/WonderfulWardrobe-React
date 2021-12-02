@@ -15,6 +15,8 @@ function Weather(){
     const [weather, setWeather] = useState([
 
     ])
+    const [temperature, setTemperature] = useState(0);
+    const [weatherDescription, setWeatherDescription] = useState("");
 
     async function weatherData(e){
 
@@ -27,19 +29,37 @@ function Weather(){
                 `https://api.openweathermap.org/data/2.5/weather?q=${form.city},${form.country}&appid=${APIKEY}`
             )
             .then(res => res.json())
-            .then((data) => console.log(Math.floor(data.main.temp - 273.15)* 9/5 + 32));
+            .then((data) => parseData(data)
+            );
             //Math.floor(data.main.temp-273.15) * 9/5 + 32 returns the temperature in farenheight
             //data.weather[0].description returns the weather description
             //data.main.temp returns the temperature
-            //data.wewater[0].icon returns the icon that matches the weather description
+            //data.weather[0].icon returns the icon that matches the weather description
             setWeather(
                 {
                     data: data
                 }
-            );
+            )
+            // setTemperature(
+            //     {
+            //         temperature: Math.floor((data.main.temp - 273.15) * 9/5) + 32
+            //     }
+            // )
+            // console.log(temperature);
+
         }
 
     }
+
+    function parseData(data){
+        // console.log(data.main.temp)
+        let temp = Math.floor((data.main.temp - 273.15) * 9/5) + 32;
+        let description = data.weather[0].description;
+        // console.log(temp)
+        setTemperature(temp);
+        setWeatherDescription(description);
+
+    };
 
     const handleChange = (e) => {
         let name = e.target.name;
