@@ -1,11 +1,17 @@
-
+import Weather from './Weather.js'
+import Inventory from './Inventory.js'
 import { useState } from 'react';
 
 function Wardrobe(){
-    const [prepoutfit, generatePreppyOutfit] = useState(" ");
-    const [casoutfit, generateCasualOutfit] = useState(" ");
-    const [eleoutfit, generateComfyOutfit] = useState(" ");
-    const [comoutfit, generateElegantOutfit] = useState(" ");
+    const [preppyOutfit, generatePreppyOutfit] = useState(" ");
+    const [casualOutfit, generateCasualOutfit] = useState(" ");
+    const [elegantOutfit, generateComfyOutfit] = useState(" ");
+    const [comfyOutfit, generateElegantOutfit] = useState(" ");
+
+    // function createPreppyOutfit(e){
+    //     let { preppystyle } = props;
+
+    // }
     const styleButton = {
         marginTop: "2vw",
         backgroundColor: "#FFDAD0",
