@@ -3,7 +3,7 @@ import wardrobe from './wardrobe.gif';
 import Wardrobe from './Wardrobe.js';
 import DisplayWeather from './DisplayWeather';
 
-function Weather(){
+const Weather = ({setTemperature, setDescription}) =>{
 
     const APIKEY = "f78fb0e517128e0a7d7a2722df5e3ff4";
 
@@ -12,11 +12,8 @@ function Weather(){
         city: "",
         country: "",
     });
-    const [weather, setWeather] = useState([
-
-    ])
-    const [temperature, setTemperature] = useState(0);
-    const [weatherDescription, setWeatherDescription] = useState("");
+    // const [temperature, setTemperature] = useState(0);
+    // const [weatherDescription, setWeatherDescription] = useState("");
 
     async function weatherData(e){
 
@@ -35,11 +32,11 @@ function Weather(){
             //data.weather[0].description returns the weather description
             //data.main.temp returns the temperature
             //data.weather[0].icon returns the icon that matches the weather description
-            setWeather(
-                {
-                    data: data
-                }
-            )
+            // setWeather(
+            //     {
+            //         data: data
+            //     }
+            // )
             // setTemperature(
             //     {
             //         temperature: Math.floor((data.main.temp - 273.15) * 9/5) + 32
@@ -52,12 +49,12 @@ function Weather(){
     }
 
     function parseData(data){
-        // console.log(data.main.temp)
+        console.log(data.main.temp)
         let temp = Math.floor((data.main.temp - 273.15) * 9/5) + 32;
         let description = data.weather[0].description;
-        // console.log(temp)
+        console.log(temp)
         setTemperature(temp);
-        setWeatherDescription(description);
+        setDescription(description);
 
     };
 
@@ -77,8 +74,11 @@ function Weather(){
         fontFamily: 'Vibur',
         fontSize: "5vw",
         color: "#D5E2EF",
-        textShadow: "2px 2px 4px #FFFFFF",
+        textShadow: "2px 2px 4px #FFFFFF",        
         border: "2px",
+    }
+    var imageSize = {
+        width: "25%"
     }
     return(
         <div className = "App">
@@ -92,12 +92,12 @@ function Weather(){
                     Submit
                 </button>
             </form>
-            {weather.data != undefined ? (
+            {/* {weather.data != undefined ? (
                 <div>
                     <DisplayWeather data={weather.data} />
                 </div>
-            ) : null}
-            <img src = {wardrobe} className = "Weather-Image" alt = "holder for weather image"/>
+            ) : null} */}
+            <img src = {wardrobe} style = {imageSize} alt = "holder for weather image"/>
         </div>
     );
 }
