@@ -20,7 +20,40 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.submit {
+  margin-top: 2vw;
+  background-color: #dfe7fd; 
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 3vw; 
+  font-family: 'GaeguBold';
+  font-size: 1.3vw;
+  margin-left: 0.5vw;
+  margin-right: 0.5vw;
+}
+.submit:hover{
+  background-color: #c7d4f6;
+}
+.fashion {
+  margin-top: 2vw;
+  background-color: #FFDAD0;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 4vw;
+  font-family: 'GaeguBold';
+  font-size: 1.3vw;
+  margin-left: 2vw;
+  margin-right: 2vw;
+}
+.fashion:hover{
+  background-color: rgb(253, 200, 185);
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

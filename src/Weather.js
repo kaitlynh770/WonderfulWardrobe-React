@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import wardrobe from './wardrobe.gif';
 import Wardrobe from './Wardrobe.js';
-import DisplayWeather from './DisplayWeather';
+import wardrobe from './img/wardrobe.gif';
 
-const Weather = ({setTemperature, setDescription}) =>{
+const Weather = ({inventoryState, fashionStyleState, setInventoryState, setFashionStyleState, setTemperature, setDescription, temperature, description}) =>{
 
     const APIKEY = "f78fb0e517128e0a7d7a2722df5e3ff4";
 
-    const [weatherText, updateWeatherText] = useState(" ");
+    const [weatherText, updateWeatherText] = useState();
+    let imgUrl = require('./img/wardrobe.gif');
+    // const [image, setImage] = useState('./img/wardrobe.gif');
     const [form, setForm] = useState({
         city: "",
         country: "",
@@ -21,6 +22,9 @@ const Weather = ({setTemperature, setDescription}) =>{
         if(form.city == ""){
             alert("Please fill out the city!");
         }
+        if(form.country == ""){
+            alert("Please fill out country!");
+        }
         else{
             const data = await fetch(
                 `https://api.openweathermap.org/data/2.5/weather?q=${form.city},${form.country}&appid=${APIKEY}`
@@ -28,24 +32,9 @@ const Weather = ({setTemperature, setDescription}) =>{
             .then(res => res.json())
             .then((data) => parseData(data)
             );
-            //Math.floor(data.main.temp-273.15) * 9/5 + 32 returns the temperature in farenheight
-            //data.weather[0].description returns the weather description
-            //data.main.temp returns the temperature
-            //data.weather[0].icon returns the icon that matches the weather description
-            // setWeather(
-            //     {
-            //         data: data
-            //     }
-            // )
-            // setTemperature(
-            //     {
-            //         temperature: Math.floor((data.main.temp - 273.15) * 9/5) + 32
-            //     }
-            // )
-            // console.log(temperature);
-
         }
-
+        setFashionStyleState(true);
+        setInventoryState(true);
     }
 
     function parseData(data){
@@ -57,6 +46,12 @@ const Weather = ({setTemperature, setDescription}) =>{
         setDescription(description);
 
     };
+    function setImage(data){
+        let weatherDescription = {description}.description;
+        if(weatherDescription == "clear skies"){
+
+        }
+    }
 
     const handleChange = (e) => {
         let name = e.target.name;
@@ -80,23 +75,50 @@ const Weather = ({setTemperature, setDescription}) =>{
     var imageSize = {
         width: "25%"
     }
+    var instruction = {
+        fontFamily: 'GaeguBold',
+        fontSize: '2vw',
+        color: '#909090'
+    }
+    var submitButtonStyle = {
+        marginTop: "2vw",
+        backgroundColor: "#dfe7fd",
+        color: "white",
+        padding: "12px 20px",
+        border: "none",
+        borderRadius: "4px",
+        cursor: "pointer",
+        height: "3vw",
+        fontFamily: "GaeguBold",
+        fontSize: "1.3vw",
+        marginLeft: "0.5vw",
+        marginRight: "0.5vw",
+    }
+    var formStyle = {
+        padding: '0.5vw',
+        border: 'none',
+        borderBottom: '2px dashed rgb(2, 57, 88)',
+        marginRight: '1vw',
+        marginLeft: '1vw',
+        backgroundColor: '#FAF5DC',
+        fontFamily: 'Gaegu',
+        fontSize: '1.2vw'
+    }
     return(
         <div className = "App">
             <h1 style = {headerStyle}>
-                Wondereful Weather Wardrobe
+                Wonderful Weather Wardrobe
             </h1>
+            <p style = {instruction}>
+                Please put in your location: 
+            </p>
             <form>
-                <input type = "text" name = "city" placeholder = "city" onChange={e=> handleChange(e)}/>
-                <input type = "text" name = "country" placeholder = "country "onChange={e=> handleChange(e)}/>
-                <button onClick = {e => weatherData(e)}>
+                <input style = {formStyle} type = "text" name = "city" placeholder = "city" onChange={e=> handleChange(e)}/>
+                <input style = {formStyle} type = "text" name = "country" placeholder = "country "onChange={e=> handleChange(e)}/>
+                <button className = "submit" onClick = {e => weatherData(e)} active = {inventoryState, fashionStyleState}>
                     Submit
                 </button>
             </form>
-            {/* {weather.data != undefined ? (
-                <div>
-                    <DisplayWeather data={weather.data} />
-                </div>
-            ) : null} */}
             <img src = {wardrobe} style = {imageSize} alt = "holder for weather image"/>
         </div>
     );

@@ -2,7 +2,7 @@ import React from 'react';
 import Wardrobe from './Wardrobe.js';
 import {useState} from 'react'
 
-const Inventory = ({shirts, setShirts, sweaters, setSweaters, tankTops, setTankTops, blouses, setBlouses, cardigans, setCardigans, skirts, setSkirts, shorts, setShorts, jeans, setJeans, sweatpants, setSweatPants, dresses, setDresses}) => {
+const Inventory = ({shirts, setShirts, sweaters, setSweaters, tankTops, setTankTops, blouses, setBlouses, cardigans, setCardigans, skirts, setSkirts, shorts, setShorts, jeans, setJeans, sweatpants, setSweatpants, dresses, setDresses, outfitText}) => {
 
     var labelFont = {
         fontFamily: 'Gaegu',
@@ -17,8 +17,18 @@ const Inventory = ({shirts, setShirts, sweaters, setSweaters, tankTops, setTankT
         margin: '1.5vw',
         marginBottom: '10vw'
     }
+    var outfitTextStyle = {
+        fontFamily: 'Gaegu',
+        fontSize: '1.8vw',
+        color: '#909090',
+        marginLeft: '6vw',
+        marginRight: '6vw'
+    }
     return(
         <div className = "App">
+            <p style = {outfitTextStyle}>
+                {outfitText}
+            </p>
             <form style = {labelFont}>
                 <div style = {spaceBetweenButtons}>
                     <label style = {spacingBetween}>
@@ -53,11 +63,11 @@ const Inventory = ({shirts, setShirts, sweaters, setSweaters, tankTops, setTankT
                     </label>
                     <label style = {spacingBetween}>
                         Jeans:
-                        <input type="number" name="Jeans" min = "0" max = "10" value = {jeans} onChange= {e=> this.setJeans(e.target.value)} />
+                        <input type="number" name="Jeans" min = "0" max = "10" value = {jeans} onChange= {e=> setJeans(e.target.value)} />
                     </label>
                     <label style = {spacingBetween}>
                         Sweatpants:
-                        <input type="number" name="Sweatpants" min = "0" max = "10" value = {sweatpants} onChange= {e=> setSweatPants(e.target.value)}/>
+                        <input type="number" name="Sweatpants" min = "0" max = "10" value = {sweatpants} onChange= {e=> setSweatpants(e.target.value)}/>
                     </label>
                     <label style = {spacingBetween}>
                         Dresses:

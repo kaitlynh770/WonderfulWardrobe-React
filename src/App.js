@@ -7,7 +7,10 @@ import Wardrobe from './Wardrobe.js';
 import {useState} from 'react'
 
 function App() {
-  const [outfitState, setOutfitState] = useState('false')
+  const [weatherState, setWeatherState] = useState(true);
+  const [inventoryState, setInventoryState] = useState(false);
+  const [fashionStyleState, setFashionStyleState] = useState(false);
+  const [outfitText, setOutfitText] = useState('');
   const [temperature, setTemperature] = useState(0);
   const [description, setDescription] = useState('');
   const [shirts, setShirts] = useState(0);
@@ -20,13 +23,11 @@ function App() {
   const [jeans, setJeans] = useState(0);
   const [sweatpants, setSweatpants] = useState(0);
   const [dresses, setDresses] = useState(0);
-  const [weatherState, setWeatherState] = useState(true)
-  const [outfitText, setOutfitText] = useState('')
   return (
     <div>
-      <Weather setTemperature = {setTemperature} setDescription = {setDescription}/>
-      <Inventory shirts = {shirts} setShirts = {setShirts} sweaters = {sweaters} setSweaters = {setSweaters} tankTops = {tankTops} setTankTops = {setTankTops} blouses = {blouses} setBlouses = {setBlouses} cardigans = {cardigans} setCardigans = {setCardigans} skirts ={skirts} setSkirts = {setSkirts} shorts = {shorts} setShorts = {setShorts} jeans = {jeans} setJeans = {setJeans} sweatpants = {sweatpants} setSweatpants = {setSweatpants} dresses = {dresses} setDresses ={setDresses}/>
-      <FashionStyle temperature = {temperature} description = {description} shirts = {shirts} sweaters = {sweaters} tankTops = {tankTops} blouses = {blouses} cardigans = {cardigans} skirts = {skirts} shorts = {shorts} jeans = {jeans} sweatpants = {sweatpants} dresses = {dresses}/>
+      <Weather inventoryState = {inventoryState} fashionStyleState = {fashionStyleState} setInventoryState = {setInventoryState} setFashionStyleState = {setFashionStyleState} setTemperature = {setTemperature} setDescription = {setDescription} description = {description} temperature = {temperature}/>
+      {inventoryState === true && <Inventory shirts = {shirts} setShirts = {setShirts} sweaters = {sweaters} setSweaters = {setSweaters} tankTops = {tankTops} setTankTops = {setTankTops} blouses = {blouses} setBlouses = {setBlouses} cardigans = {cardigans} setCardigans = {setCardigans} skirts ={skirts} setSkirts = {setSkirts} shorts = {shorts} setShorts = {setShorts} jeans = {jeans} setJeans = {setJeans} sweatpants = {sweatpants} setSweatpants = {setSweatpants} dresses = {dresses} setDresses ={setDresses}  outfitText = {outfitText}/>}
+      {fashionStyleState === true &&<FashionStyle temperature = {temperature} description = {description} shirts = {shirts} sweaters = {sweaters} tankTops = {tankTops} blouses = {blouses} cardigans = {cardigans} skirts = {skirts} shorts = {shorts} jeans = {jeans} sweatpants = {sweatpants} dresses = {dresses} setOutfitText = {setOutfitText} outfitText = {outfitText}/>}
       <Wardrobe/>
     </div>
     // <div className="App">
