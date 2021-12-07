@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import Wardrobe from './Wardrobe.js';
 import wardrobe from './img/wardrobe.gif';
+import sunny from './img/sunny.gif';
+import rainy from './img/rainy.gif';
 
 const Weather = ({inventoryState, fashionStyleState, setInventoryState, setFashionStyleState, setTemperature, setDescription, temperature, description}) =>{
 
     const APIKEY = "f78fb0e517128e0a7d7a2722df5e3ff4";
 
     const [weatherText, updateWeatherText] = useState();
-    let imgUrl = require('./img/wardrobe.gif');
     // const [image, setImage] = useState('./img/wardrobe.gif');
     const [form, setForm] = useState({
         city: "",
         country: "",
     });
-    // const [temperature, setTemperature] = useState(0);
-    // const [weatherDescription, setWeatherDescription] = useState("");
+    const [image, setWeatherImage] = useState(wardrobe);
 
     async function weatherData(e){
 
@@ -33,23 +33,38 @@ const Weather = ({inventoryState, fashionStyleState, setInventoryState, setFashi
             .then((data) => parseData(data)
             );
         }
-        setFashionStyleState(true);
-        setInventoryState(true);
     }
 
     function parseData(data){
-        console.log(data.main.temp)
-        let temp = Math.floor((data.main.temp - 273.15) * 9/5) + 32;
-        let description = data.weather[0].description;
-        console.log(temp)
-        setTemperature(temp);
-        setDescription(description);
-
+        // console.log(data.main.temp)
+        if(data.message == "city not found"){
+            alert("City or country was not valid, please try again!");
+        }
+        else{
+            let temp = Math.floor((data.main.temp - 273.15) * 9/5) + 32;
+            let description = data.weather[0].description;
+            setTemperature(temp);
+            setDescription(description);
+            console.log(description);
+        }
+        if({temperature}.temperature != 0){
+            console.log("Im in hereeee");
+            setFashionStyleState(true);
+            setInventoryState(true);
+        }
+        else{
+            setInventoryState(false);
+            setFashionStyleState(false);
+        }
+        setImage();
     };
-    function setImage(data){
+    function setImage(){
         let weatherDescription = {description}.description;
         if(weatherDescription == "clear skies"){
-
+            setWeatherImage(sunny);
+        }
+        else if(weatherDescription == "overcast clouds"){
+            setWeatherImage(rainy);
         }
     }
 
@@ -119,7 +134,7 @@ const Weather = ({inventoryState, fashionStyleState, setInventoryState, setFashi
                     Submit
                 </button>
             </form>
-            <img src = {wardrobe} style = {imageSize} alt = "holder for weather image"/>
+            <img src = {image} style = {imageSize} alt = "holder for weather image"/>
         </div>
     );
 }
