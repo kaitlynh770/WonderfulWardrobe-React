@@ -8,6 +8,8 @@ import {useState} from 'react'
 
 function App() {
   const [weatherState, setWeatherState] = useState(true);
+  const [weatherText, setWeatherText] = useState('');
+  const [mainWeather, setMainWeather] = useState('');
   const [inventoryState, setInventoryState] = useState(false);
   const [fashionStyleState, setFashionStyleState] = useState(false);
   const [outfitText, setOutfitText] = useState('');
@@ -25,7 +27,7 @@ function App() {
   const [dresses, setDresses] = useState(0);
   return (
     <div>
-      <Weather inventoryState = {inventoryState} fashionStyleState = {fashionStyleState} setInventoryState = {setInventoryState} setFashionStyleState = {setFashionStyleState} setTemperature = {setTemperature} setDescription = {setDescription} description = {description} temperature = {temperature}/>
+      <Weather inventoryState = {inventoryState} fashionStyleState = {fashionStyleState} setInventoryState = {setInventoryState} setFashionStyleState = {setFashionStyleState} setTemperature = {setTemperature} setDescription = {setDescription} description = {description} temperature = {temperature} mainWeather = {mainWeather} setMainWeather = {setMainWeather} weatherText = {weatherText} setWeatherText = {setWeatherText}/>
       {inventoryState === true && <Inventory shirts = {shirts} setShirts = {setShirts} sweaters = {sweaters} setSweaters = {setSweaters} tankTops = {tankTops} setTankTops = {setTankTops} blouses = {blouses} setBlouses = {setBlouses} cardigans = {cardigans} setCardigans = {setCardigans} skirts ={skirts} setSkirts = {setSkirts} shorts = {shorts} setShorts = {setShorts} jeans = {jeans} setJeans = {setJeans} sweatpants = {sweatpants} setSweatpants = {setSweatpants} dresses = {dresses} setDresses ={setDresses}  outfitText = {outfitText}/>}
       {fashionStyleState === true &&<FashionStyle temperature = {temperature} description = {description} shirts = {shirts} sweaters = {sweaters} tankTops = {tankTops} blouses = {blouses} cardigans = {cardigans} skirts = {skirts} shorts = {shorts} jeans = {jeans} sweatpants = {sweatpants} dresses = {dresses} setOutfitText = {setOutfitText} outfitText = {outfitText}/>}
       <Wardrobe/>

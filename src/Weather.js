@@ -2,13 +2,17 @@ import React, { useState } from 'react';
 import Wardrobe from './Wardrobe.js';
 import wardrobe from './img/wardrobe.gif';
 import sunny from './img/sunny.gif';
-import rainy from './img/rainy.gif';
+import rain from './img/rain.gif';
+import thunderstorm from './img/thunderstorm.gif';
+import clouds from './img/clouds.gif';
+import snow from './img/snow.gif';
+import drizzle from './img/drizzle.gif';
 
-const Weather = ({inventoryState, fashionStyleState, setInventoryState, setFashionStyleState, setTemperature, setDescription, temperature, description}) =>{
+
+const Weather = ({inventoryState, fashionStyleState, setInventoryState, setFashionStyleState, setTemperature, setDescription, temperature, description, mainWeather, setMainWeather, weatherText, setWeatherText}) =>{
 
     const APIKEY = "f78fb0e517128e0a7d7a2722df5e3ff4";
-
-    const [weatherText, updateWeatherText] = useState();
+;
     // const [image, setImage] = useState('./img/wardrobe.gif');
     const [form, setForm] = useState({
         city: "",
@@ -36,6 +40,7 @@ const Weather = ({inventoryState, fashionStyleState, setInventoryState, setFashi
     }
 
     function parseData(data){
+        console.log(data);
         // console.log(data.main.temp)
         if(data.message == "city not found"){
             alert("City or country was not valid, please try again!");
@@ -43,30 +48,61 @@ const Weather = ({inventoryState, fashionStyleState, setInventoryState, setFashi
         else{
             let temp = Math.floor((data.main.temp - 273.15) * 9/5) + 32;
             let description = data.weather[0].description;
+            let main = data.weather[0].main;
             setTemperature(temp);
             setDescription(description);
-            console.log(description);
+            setMainWeather(main);
+            if(temp != 0){
+                setFashionStyleState(true);
+                setInventoryState(true);
+            }
+            else{
+                setInventoryState(false);
+                setFashionStyleState(false);
+            }
+            if(main == "Clear"){
+                setWeatherImage(sunny);
+                setWeatherText("Today is " + temp + "°F and is " + main.toLowerCase() + " with " + description);
+            }
+            else if(main == "Clouds"){
+                setWeatherImage(clouds);
+                setWeatherText("Today is " + temp + "°F and has " + main.toLowerCase() + " with " + description);
+            }
+            else if (main == "Snow"){
+                setWeatherImage(snow);
+                setWeatherText("Today is " + temp + "°F and has " + main.toLowerCase() + " with " + description);
+            }
+            else if (main == "Thunderstorm"){
+                setWeatherImage(thunderstorm);setWeatherImage(thunderstorm);
+                setWeatherText("Today is " + temp + "°F and has a " + main.toLowerCase() + " with " + description);
+            }
+            else if (main == "Drizzle"){
+                setWeatherImage(drizzle);
+                setWeatherText("Today is " + temp + "°F and has a" + main.toLowerCase() + " with " + description);
+            }
         }
-        if({temperature}.temperature != 0){
-            console.log("Im in hereeee");
-            setFashionStyleState(true);
-            setInventoryState(true);
-        }
-        else{
-            setInventoryState(false);
-            setFashionStyleState(false);
-        }
-        setImage();
+        // setImage();
     };
-    function setImage(){
-        let weatherDescription = {description}.description;
-        if(weatherDescription == "clear skies"){
-            setWeatherImage(sunny);
-        }
-        else if(weatherDescription == "overcast clouds"){
-            setWeatherImage(rainy);
-        }
-    }
+    // function setImage(){
+    //     if(mainWeather == "Clear"){
+    //         setWeatherImage(sunny);
+    //     }
+    //     else if(mainWeather == "Rain"){
+    //         setWeatherImage(rain);
+    //     }
+    //     else if (mainWeather == "Clouds"){
+    //         setWeatherImage(clouds);
+    //     }
+    //     else if (mainWeather == "Snow"){
+    //         setWeatherImage(snow);
+    //     }
+    //     else if (mainWeather == "Thunderstorm"){
+    //         setWeatherImage(thunderstorm);
+    //     }
+    //     else if (mainWeather == "Drizzle"){
+    //         setWeatherImage(drizzle);
+    //     }
+    // }
 
     const handleChange = (e) => {
         let name = e.target.name;
@@ -134,6 +170,9 @@ const Weather = ({inventoryState, fashionStyleState, setInventoryState, setFashi
                     Submit
                 </button>
             </form>
+            <p style = {instruction}>
+                {weatherText}
+            </p>
             <img src = {image} style = {imageSize} alt = "holder for weather image"/>
         </div>
     );

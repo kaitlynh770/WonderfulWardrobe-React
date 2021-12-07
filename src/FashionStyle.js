@@ -88,7 +88,7 @@ const FashionStyle =({temperature, description, shirts, sweaters, tankTops, blou
     function createElegantOutfit(){
         if(temperatureUsed < 45){
             if(cardigansAmount >= 1 && dressesAmount >= 1 && blousesAmount >= 1 && skirtsAmount >= 1){
-                setOutfitText("Brr, it's cold today! Preciesely " + temperatureUsed + "°F with " + weatherDescription + "It's cold today, but fashion comes first, right? That being said, based on your wardrobe and fashion preference, you should wear a dress with a cardigan! If you're not feeling that outfit, you can wear a blouse with a skirt with a cardigan thrown over! Bring an extra coat to stay warm!");
+                setOutfitText("Brr, it's cold today! Preciesely " + temperatureUsed + "°F with " + weatherDescription + "! It's cold today, but fashion comes first, right? That being said, based on your wardrobe and fashion preference, you should wear a dress with a cardigan! If you're not feeling that outfit, you can wear a blouse with a skirt with a cardigan thrown over! Bring an extra coat to stay warm!");
             }
             else if (cardigansAmount == 0 || blousesAmount == 0 || dressesAmount == 0 || skirtsAmount == 0){
                 setOutfitText("Hmm, it looks like you don't have the wardrobe items for your desired fashion style. Maybe choose a different style?");
