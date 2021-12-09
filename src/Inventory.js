@@ -1,9 +1,9 @@
 import React from 'react';
-import Wardrobe from './Wardrobe.js';
 import {useState} from 'react'
 
 const Inventory = ({shirts, setShirts, sweaters, setSweaters, tankTops, setTankTops, blouses, setBlouses, cardigans, setCardigans, skirts, setSkirts, shorts, setShorts, jeans, setJeans, sweatpants, setSweatpants, dresses, setDresses, outfitText}) => {
-
+    //this component doesn't have much logic in it since it sets the state of each value in the return statement.
+    //mainly just keeps track of the number of each item, this value will be used in FashionStyle to determine what outfit the user will get back
     var labelFont = {
         fontFamily: 'Gaegu',
         fontSize: '1.5vw',

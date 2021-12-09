@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Wardrobe from './Wardrobe.js';
 import wardrobe from './img/wardrobe.gif';
 import sunny from './img/sunny.gif';
 import rain from './img/rain.gif';
@@ -11,56 +10,52 @@ import drizzle from './img/drizzle.gif';
 
 const Weather = ({inventoryState, fashionStyleState, setInventoryState, setFashionStyleState, setTemperature, setDescription, temperature, description, mainWeather, setMainWeather, weatherText, setWeatherText}) =>{
 
-    const APIKEY = "f78fb0e517128e0a7d7a2722df5e3ff4";
-;
-    // const [image, setImage] = useState('./img/wardrobe.gif');
-    const [form, setForm] = useState({
+    const APIKEY = "f78fb0e517128e0a7d7a2722df5e3ff4"; //API key needed to fetch data 
+    const [form, setForm] = useState({ //using hooks to set the value of the form when user inputs the city and country they live in
         city: "",
         country: "",
     });
-    const [image, setWeatherImage] = useState(wardrobe);
+    const [image, setWeatherImage] = useState(wardrobe); //use hooks to change the image resource based on different weather conditions
 
-    async function weatherData(e){
+    async function weatherData(e){ //getting data from the API
 
         e.preventDefault();
-        if(form.city == ""){
+        if(form.city == ""){ //checking for blank inputs
             alert("Please fill out the city!");
         }
         if(form.country == ""){
             alert("Please fill out country!");
         }
-        else{
+        else{ //if the city or form was not blank, then make the request to the API
             const data = await fetch(
                 `https://api.openweathermap.org/data/2.5/weather?q=${form.city},${form.country}&appid=${APIKEY}`
             )
             .then(res => res.json())
-            .then((data) => parseData(data)
+            .then((data) => parseData(data) //function that actually sets the value from the data in the API
             );
         }
     }
 
     function parseData(data){
-        console.log(data);
-        // console.log(data.main.temp)
-        if(data.message == "city not found"){
+        if(data.message == "city not found"){ //checks if the city is a valid one 
             alert("City or country was not valid, please try again!");
         }
         else{
-            let temp = Math.floor((data.main.temp - 273.15) * 9/5) + 32;
-            let description = data.weather[0].description;
-            let main = data.weather[0].main;
-            setTemperature(temp);
-            setDescription(description);
-            setMainWeather(main);
-            if(temp != 0){
-                setFashionStyleState(true);
+            let temp = Math.floor((data.main.temp - 273.15) * 9/5) + 32; //converting the temperature from Kelvins to Fahrenheit
+            let description = data.weather[0].description; //in the json file, the weather description is stored in weather object at index 0, .description is to access the text that we need.
+            let main = data.weather[0].main; 
+            setTemperature(temp); //set temperature
+            setDescription(description); //set description of weather
+            setMainWeather(main); //set the main description
+            if(temp != 0){ //if the temp isn't 0, that means that a city was found and a temperature was read
+                setFashionStyleState(true); //now we can display both FashionStyle and InventoryStyle
                 setInventoryState(true);
             }
             else{
-                setInventoryState(false);
+                setInventoryState(false); //if it's not valid, then the two components will not render
                 setFashionStyleState(false);
             }
-            if(main == "Clear"){
+            if(main == "Clear"){ //setting the image based on different weather conditions
                 setWeatherImage(sunny);
                 setWeatherText("Today is " + temp + "°F and is " + main.toLowerCase() + " with " + description);
             }
@@ -81,30 +76,9 @@ const Weather = ({inventoryState, fashionStyleState, setInventoryState, setFashi
                 setWeatherText("Today is " + temp + "°F and has a" + main.toLowerCase() + " with " + description);
             }
         }
-        // setImage();
     };
-    // function setImage(){
-    //     if(mainWeather == "Clear"){
-    //         setWeatherImage(sunny);
-    //     }
-    //     else if(mainWeather == "Rain"){
-    //         setWeatherImage(rain);
-    //     }
-    //     else if (mainWeather == "Clouds"){
-    //         setWeatherImage(clouds);
-    //     }
-    //     else if (mainWeather == "Snow"){
-    //         setWeatherImage(snow);
-    //     }
-    //     else if (mainWeather == "Thunderstorm"){
-    //         setWeatherImage(thunderstorm);
-    //     }
-    //     else if (mainWeather == "Drizzle"){
-    //         setWeatherImage(drizzle);
-    //     }
-    // }
 
-    const handleChange = (e) => {
+    const handleChange = (e) => { //handling form input
         let name = e.target.name;
         let value = e.target.value;
 
@@ -177,5 +151,4 @@ const Weather = ({inventoryState, fashionStyleState, setInventoryState, setFashi
         </div>
     );
 }
-
 export default Weather;

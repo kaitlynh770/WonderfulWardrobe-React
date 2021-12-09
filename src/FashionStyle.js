@@ -7,7 +7,7 @@ const FashionStyle =({temperature, description, shirts, sweaters, tankTops, blou
     const [comfyOutfit, generateElegantOutfit] = useState(" ");
     const [temp, setTemp] = useState(" ");
 
-    let temperatureUsed = {temperature}.temperature;
+    let temperatureUsed = {temperature}.temperature; //this is grabbing the actual value, since just {temperature} is the object, which is not what I want. This applies to the rest of the variables listed below
     let shirtAmount = {shirts}.shirts;
     let sweatersAmount = {sweaters}.sweaters;
     let tankTopsAmount = {tankTops}.tankTops;
@@ -22,7 +22,7 @@ const FashionStyle =({temperature, description, shirts, sweaters, tankTops, blou
     let weatherDescription = {description}.description;
 
 
-    function createPreppyOutfit(){
+    function createPreppyOutfit(){ //function that consists of if else statements to check if the user has certain items in their wardrobe. Depending on what style they choose and what temperature it is, the function will check the inventory and set different outfitTexts
         console.log({description});
 
         if(temperatureUsed < 45){
