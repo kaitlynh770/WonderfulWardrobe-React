@@ -24,15 +24,16 @@ const FashionStyle =({temperature, description, shirts, sweaters, tankTops, blou
 
     function createPreppyOutfit(){ //function that consists of if else statements to check if the user has certain items in their wardrobe. Depending on what style they choose and what temperature it is, the function will check the inventory and set different outfitTexts
         console.log({description});
+        console.log(temperatureUsed);
 
-        if(temperatureUsed < 45){
+        if(temperatureUsed <= 45){
             if(cardigansAmount >= 1 && sweatersAmount >= 1 && skirtsAmount >= 1){
                 console.log("Im in here rn");
                 setOutfitText("Brr, it's cold, precisely " +  temperatureUsed + "°F with " + weatherDescription + "! But fashion comes first! Judging from your wardrobe, you can wear a sweater and a skirt! Throw on a cozy cardigan and your look is complete. Stay warm!");
                 console.log({outfitText});
             }
             else if (cardigansAmount == 0 && sweatersAmount >= 1 && skirtsAmount >= 1){
-                setOutfitText("Brr, it's cold, preciesely " + temperatureUsed + "°F! But fashion comes first! Judging from your wardrobe, you can wear a sweater and a skirt! If you had a cardigan, it would be cuter, but you gotta work with what you have!");
+                setOutfitText("Brr, it's cold, precisely " + temperatureUsed + "°F! But fashion comes first! Judging from your wardrobe, you can wear a sweater and a skirt! If you had a cardigan, it would be cuter, but you gotta work with what you have!");
                 console.log({outfitText}.outfitText);
             }
             else if (sweatersAmount == 0 && skirtsAmount == 0 && cardigansAmount == 0){
@@ -60,7 +61,7 @@ const FashionStyle =({temperature, description, shirts, sweaters, tankTops, blou
         }
     }
     function createCasualOutfit(){
-        if(temperatureUsed < 45){
+        if(temperatureUsed <= 45){
             if(sweatersAmount >= 1 && jeansAmount >= 1){
                 setOutfitText("Brr, it's cold! Precisely " + temperatureUsed + "°F with "+ weatherDescription + "! Based on your style preference and your wardrobe, you should wear a comfy sweater with a pair of jeans!");
             }
@@ -86,9 +87,9 @@ const FashionStyle =({temperature, description, shirts, sweaters, tankTops, blou
         }
     }
     function createElegantOutfit(){
-        if(temperatureUsed < 45){
+        if(temperatureUsed <= 45){
             if(cardigansAmount >= 1 && dressesAmount >= 1 && blousesAmount >= 1 && skirtsAmount >= 1){
-                setOutfitText("Brr, it's cold today! Preciesely " + temperatureUsed + "°F with " + weatherDescription + "! It's cold today, but fashion comes first, right? That being said, based on your wardrobe and fashion preference, you should wear a dress with a cardigan! If you're not feeling that outfit, you can wear a blouse with a skirt with a cardigan thrown over! Bring an extra coat to stay warm!");
+                setOutfitText("Brr, it's cold today! Precisely " + temperatureUsed + "°F with " + weatherDescription + "! It's cold today, but fashion comes first, right? That being said, based on your wardrobe and fashion preference, you should wear a dress with a cardigan! If you're not feeling that outfit, you can wear a blouse with a skirt with a cardigan thrown over! Bring an extra coat to stay warm!");
             }
             else if (cardigansAmount == 0 || blousesAmount == 0 || dressesAmount == 0 || skirtsAmount == 0){
                 setOutfitText("Hmm, it looks like you don't have the wardrobe items for your desired fashion style. Maybe choose a different style?");
@@ -112,9 +113,9 @@ const FashionStyle =({temperature, description, shirts, sweaters, tankTops, blou
         }
     }
     function createComfyOutfit(){
-        if(temperatureUsed < 45){
+        if(temperatureUsed <= 45){
             if(sweatersAmount >= 1 && sweatpantsAmount >= 1){
-                setOutfitText("Brr, it's cold today! Preciesely " + temperatureUsed + "°F with " + weatherDescription + "! A cozy outfit is the best for this temperature! The best outfit for this is a warm sweater with a comfy pair of sweatpants! Stay warm!");
+                setOutfitText("Brr, it's cold today! Precisely " + temperatureUsed + "°F with " + weatherDescription + "! A cozy outfit is the best for this temperature! The best outfit for this is a warm sweater with a comfy pair of sweatpants! Stay warm!");
             }
             else if (sweatpantsAmount == 0 || sweatpantsAmount == 0){
                 setOutfitText("Hmm, it looks like you don't have the wardrobe items for your desired fashion style. Maybe choose a different style?");
