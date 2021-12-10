@@ -47,6 +47,7 @@ const Weather = ({inventoryState, fashionStyleState, setInventoryState, setFashi
             setTemperature(temp); //set temperature
             setDescription(description); //set description of weather
             setMainWeather(main); //set the main description
+            console.log(main);
             if(temp != 0){ //if the temp isn't 0, that means that a city was found and a temperature was read
                 setFashionStyleState(true); //now we can display both FashionStyle and InventoryStyle
                 setInventoryState(true);
@@ -69,11 +70,15 @@ const Weather = ({inventoryState, fashionStyleState, setInventoryState, setFashi
             }
             else if (main == "Thunderstorm"){
                 setWeatherImage(thunderstorm);setWeatherImage(thunderstorm);
-                setWeatherText("Today is " + temp + "°F and has a " + main.toLowerCase() + " with " + description);
+                setWeatherText("Today is " + temp + "°F with a " + main.toLowerCase());
             }
             else if (main == "Drizzle"){
                 setWeatherImage(drizzle);
-                setWeatherText("Today is " + temp + "°F and has a" + main.toLowerCase() + " with " + description);
+                setWeatherText("Today is " + temp + "°F with" + main.toLowerCase() + " and " + description);
+            }
+            else if (main == "Rain"){
+                setWeatherImage(rain);
+                setWeatherText("Today is " + temp + "°F and has " + main.toLowerCase() + " with " + description);
             }
         }
     };

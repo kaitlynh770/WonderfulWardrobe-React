@@ -5,6 +5,10 @@ import FashionStyle from './FashionStyle.js';
 import Inventory from './Inventory.js';
 import {useState} from 'react'
 
+//Sources
+//Weather API Code: https://www.youtube.com/watch?v=uZGhTYZ6eys
+//References for using Hooks: https://github.com/calistanguyen/climb-on/tree/main/src/components
+
 function App() { //since this app is using hooks, App needs to be changed into a function
   const [weatherText, setWeatherText] = useState(''); //useState for the weatherText that is displayed when data from the Weather API is read 
   const [mainWeather, setMainWeather] = useState(''); //this is the text that describes the weather condition
