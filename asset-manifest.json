@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/WonderfulWardrobe-React/static/css/main.eaa06c0c.chunk.css",
+    "main.js": "/WonderfulWardrobe-React/static/js/main.21865022.chunk.js",
+    "main.js.map": "/WonderfulWardrobe-React/static/js/main.21865022.chunk.js.map",
+    "runtime-main.js": "/WonderfulWardrobe-React/static/js/runtime-main.0634bde9.js",
+    "runtime-main.js.map": "/WonderfulWardrobe-React/static/js/runtime-main.0634bde9.js.map",
+    "static/js/2.8e8a7789.chunk.js": "/WonderfulWardrobe-React/static/js/2.8e8a7789.chunk.js",
+    "static/js/2.8e8a7789.chunk.js.map": "/WonderfulWardrobe-React/static/js/2.8e8a7789.chunk.js.map",
+    "static/js/3.bf04a5d5.chunk.js": "/WonderfulWardrobe-React/static/js/3.bf04a5d5.chunk.js",
+    "static/js/3.bf04a5d5.chunk.js.map": "/WonderfulWardrobe-React/static/js/3.bf04a5d5.chunk.js.map",
+    "index.html": "/WonderfulWardrobe-React/index.html",
+    "static/css/main.eaa06c0c.chunk.css.map": "/WonderfulWardrobe-React/static/css/main.eaa06c0c.chunk.css.map",
+    "static/js/2.8e8a7789.chunk.js.LICENSE.txt": "/WonderfulWardrobe-React/static/js/2.8e8a7789.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/WonderfulWardrobe-React/static/media/Vibur-Regular.763eafdb.ttf",
+    "static/media/logo.6ce24c58.svg": "/WonderfulWardrobe-React/static/media/logo.6ce24c58.svg",
+    "static/media/snow.61d64baf.gif": "/WonderfulWardrobe-React/static/media/snow.61d64baf.gif",
+    "static/media/wardrobe.c2b3b72d.gif": "/WonderfulWardrobe-React/static/media/wardrobe.c2b3b72d.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0634bde9.js",
+    "static/js/2.8e8a7789.chunk.js",
+    "static/css/main.eaa06c0c.chunk.css",
+    "static/js/main.21865022.chunk.js"
+  ]
+}
